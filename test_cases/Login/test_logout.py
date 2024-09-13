@@ -1,19 +1,18 @@
 from playwright.sync_api import Page,expect
+from pages.productListPage import ProductListPage
+from pages.loginPage import LoginPage
 
 
+def test_logout(set_up_tear_down)->None:
+    page = set_up_tear_down
+    credentials = {'username': 'standard_user', 'password': 'secret_sauce'}
+    login_page = LoginPage(page)
+    login_page.perform_login(credentials)
 
-def test_logout(page: Page)->None:
-    page.goto("https://saucedemo.com")
-    page.get_by_placeholder("Username").fill("standard_user")
-    page.get_by_placeholder("Password").fill("secret_sauce")
-    page.get_by_text("Login").click()
-    product_header = page.locator("//span[@class='title']")
-    expect(product_header).to_have_text("Products")
+    productListpage = ProductListPage(page)
+    productListpage.perform_logout()
 
     # Log Out
 
-    click_burger_menu = page.locator("//button[@id='react-burger-menu-btn']").click()
-    click_logout = page.locator("//a[@id='logout_sidebar_link']").click()
 
-    login_button_verification = page.get_by_text("Login")
-    expect(login_button_verification).to_be_visible()
+    expect(login_page.login_button).to_be_visible()

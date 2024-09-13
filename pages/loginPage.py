@@ -7,6 +7,9 @@ class LoginPage:
         self._username = page.get_by_placeholder("Username")
         self._password = page.get_by_placeholder("Password")
         self._login_button = page.get_by_text("Login")
+        self._error_message_for_invalid = page.locator("//h3[contains(text(),'Epic sadface: Username and password do not match a')]")
+        self._error_message_for_empty = page.locator("//h3[normalize-space()='Epic sadface: Username is required']")
+
 
     def enter_username(self,u_name):
         self._username.clear()
@@ -27,6 +30,15 @@ class LoginPage:
         return ProductListPage(self.page)
 
 
+    @property
+    def error_message_for_invalid(self):
+        return self._error_message_for_invalid
 
+    @property
+    def error_message_for_empty(self):
+        return self._error_message_for_empty
 
+    @property
+    def login_button(self):
+        return self._login_button
 
