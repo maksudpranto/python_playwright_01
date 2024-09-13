@@ -4,7 +4,7 @@ from pages.loginPage import LoginPage
 
 def test_valid_login(set_up_tear_down)->None:
     page = set_up_tear_down
-    credentials = {'username':'standard_user','password':'secret_sauce'}
+    credentials = {'username':'standard_user','password':'standard_user'}
     login_page = LoginPage(page)
     login_done = login_page.perform_login(credentials)
     expect(login_done.product_header).to_have_text("Products")
