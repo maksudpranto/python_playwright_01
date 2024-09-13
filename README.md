@@ -1,2 +1,1 @@
 # python_playwright_01
-# python_selenium_playwright_project
