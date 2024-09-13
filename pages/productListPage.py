@@ -1,6 +1,3 @@
-from playwright.sync_api import expect
-
-
 class ProductListPage:
     def __init__(self,page):
         self.page = page
@@ -20,7 +17,6 @@ class ProductListPage:
     def perform_logout(self):
         self.click_hamburger_menu()
         self.click_logout_button()
-
 
 
     @property

@@ -9,6 +9,7 @@ class LoginPage:
         self._login_button = page.get_by_text("Login")
         self._error_message_for_invalid = page.locator("//h3[contains(text(),'Epic sadface: Username and password do not match a')]")
         self._error_message_for_empty = page.locator("//h3[normalize-space()='Epic sadface: Username is required']")
+        self._error_message_without_login = page.locator("//h3[@data-test='error']")
 
 
     def enter_username(self,u_name):
@@ -37,6 +38,10 @@ class LoginPage:
     @property
     def error_message_for_empty(self):
         return self._error_message_for_empty
+
+    @property
+    def error_message_without_login(self):
+        return self._error_message_without_login
 
     @property
     def login_button(self):
